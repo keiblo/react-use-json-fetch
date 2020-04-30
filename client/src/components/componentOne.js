@@ -2,15 +2,14 @@ import React from "react";
 import {useJsonFetch} from "../hooks/use-json-fetch";
 
 const ComponentOne = () => {
-  const [data, loading, error] = useJsonFetch("http://localhost:7070/data", {});
+  const [data] = useJsonFetch("http://localhost:7070/data", {});
 
-  if (error) {
-    return <p>{error}</p>;
-  } else if (loading) {
+  if (data.error) {
+    return <p>{data.error}</p>;
+  } else if (data.loading) {
     return <p>Loading...</p>;
   } else {
-    console.log(data);
-    return <p>{data}</p>;
+    return <p>{data.status}</p>;
   }
 };
 
