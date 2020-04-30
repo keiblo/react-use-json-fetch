@@ -9,6 +9,10 @@ const App = () => {
     <div>
       <p>Запрос на GET http://localhost:7070/data </p>
       <ComponentOne />
+      <p>Запрос на GET http://localhost:7070/error</p>
+      <ComponentTwo />
+      <p>GET http://localhost:7070/loading</p>
+      <ComponentThree />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import useJsonFetch from "../hooks/use-json-fetch";
+import {useJsonFetch} from "../hooks/use-json-fetch";
 
 const ComponentTwo = () => {
   const [data, loading, error] = useJsonFetch(
@@ -12,7 +12,7 @@ const ComponentTwo = () => {
   } else if (loading) {
     return <p>Loading...</p>;
   } else {
-    return <p>{data.status}</p>;
+    return <p>{data}</p>;
   }
 };
 
