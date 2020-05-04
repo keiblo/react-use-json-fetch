@@ -4,12 +4,10 @@ import {useJsonFetch} from "../hooks/use-json-fetch";
 const ComponentOne = () => {
   const [data] = useJsonFetch("http://localhost:7070/data", {});
 
-  if (data.error) {
-    return <p>{data.error}</p>;
-  } else if (data.loading) {
-    return <p>Loading...</p>;
+  if (data.data) {
+    return <p>Respponse status: {data.data.status}</p>;
   } else {
-    return <p>{data.status}</p>;
+    return <p>Not working</p>;
   }
 };
 

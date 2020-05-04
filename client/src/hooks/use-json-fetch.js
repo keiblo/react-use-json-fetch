@@ -6,23 +6,19 @@ export const useJsonFetch = (url, options) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
-      let cancelled = false;
-      setLoading(true);
-      setError(false);
-      try {
-        const res = await fetch(url, options);
-        const json = await res.json();
-
-        setData(json);
+      const response = await fetch(url);
+      if (response.status >= 200 && response.status <= 299) {
+        const jsonResponse = await response.json();
+        setData(jsonResponse);
         setLoading(false);
-        return () => (cancelled = true);
-      } catch (error) {
-        setError(error);
-        return () => (cancelled = true);
+      } else {
+        // Handle errors
+        setError(response.status);
+        setLoading(false);
       }
     };
-
     fetchData(url, options);
   }, [url]);
 
